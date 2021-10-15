@@ -1,0 +1,120 @@
+$box-shadow: 2px 5px 16px 0px #0b325e, 0px 0px 7px 7px rgba(0, 0, 0, 0);
+$transition: 100ms ease;
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: monospace;
+	font-size: 1.5rem;
+	background-color: teal;
+	color: wheat;
+}
+
+.container {
+	padding: 40px;
+	height: calc(100vh - 80px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 476px) {
+		width: 100%;
+	}
+}
+
+.timer {
+	display: flex;
+	justify-content: space-between;
+
+	@media (max-width: 476px) {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 5px;
+	width: 90px;
+	position: relative;
+
+	&:not(:last-child) {
+		margin-right: 10px;
+
+		&::after {
+			content: ':';
+			position: absolute;
+			left: 84px;
+			top: 4px;
+		}
+	}
+
+	@media (max-width: 476px) {
+		width: 200px;
+		font-size: 1.1rem;
+
+		&:not(:last-child) {
+			margin-bottom: 10px;
+			margin-right: 0;
+
+			&::after {
+				content: '';
+			}
+		}
+	}
+}
+
+.label {
+	font-size: 0.8rem;
+}
+
+.value {
+	font-size: 2rem;
+}
+
+.btn-container {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.btn {
+	padding: 10px 16px;
+	background-color: tomato;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	transition: $transition;
+
+	&:hover {
+		box-shadow: $box-shadow;
+		cursor: pointer;
+	}
+
+	&:active,
+	&:visited,
+	&:focus-within,
+	&:focus-visible {
+		box-shadow: none;
+	}
+
+	&:first-child {
+		margin-right: 10px;
+	}
+
+	&-launch {
+		background-color: #6ad989;
+	}
+
+	&-stop {
+		background-color: tomato;
+	}
+
+	&--inactive {
+		background-color: #cc9e96;
+		pointer-events: none;
+	}
+}
