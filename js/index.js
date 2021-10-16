@@ -1,9 +1,10 @@
 const refs = {
 	launchBtn: document.querySelector('.btn-launch'),
 	stopBtn: document.querySelector('.btn-stop'),
+	targetDateContent: document.querySelector('.targetdate-date'),
 };
 
-const { launchBtn, stopBtn } = refs;
+const { launchBtn, stopBtn, targetDateContent } = refs;
 
 class CountdownTimer {
 	constructor({ selector, targetDate }) {
@@ -60,8 +61,19 @@ class CountdownTimer {
 
 const timer = new CountdownTimer({
 	selector: '#timer-1',
-	targetDate: new Date('Oct 18, 2021, 21:53'),
+	targetDate: new Date('Oct 20, 2021'),
 });
+
+const dateFormatter = new Date(timer.targetDate);
+
+targetDateContent.insertAdjacentHTML(
+	'afterbegin',
+	dateFormatter.getDate() +
+		' ' +
+		dateFormatter.toLocaleString('default', { month: 'short' }) +
+		' ' +
+		dateFormatter.getFullYear()
+);
 
 launchBtn.addEventListener('click', () => {
 	timer.start();
